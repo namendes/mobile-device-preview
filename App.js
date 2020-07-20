@@ -52,12 +52,12 @@ function App() {
         const currentRouteName = getActiveRouteName(state);
         console.log(previousRouteName + " - " + currentRouteName);
         if (previousRouteName !== currentRouteName) {
-          changeRoute(currentRouteName);
+         // changeRoute(currentRouteName);
         }
         setCurrentNavigationState(currentRouteName);
       }}
     >
-      <Stack.Navigator initialRouteName={HomeScreen} headerMode="none">
+      <Stack.Navigator initialRouteName={"home"} headerMode="none">
         <Stack.Screen
           name="intro"
           component={IntroScreen}
