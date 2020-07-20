@@ -2,14 +2,17 @@ import React, { createContext, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { BrComponent, BrPage, BrPageContext } from "@bloomreach/react-sdk";
 import axios from "axios";
-import NewsList from "../components/NewsList";
 import Banner from "../components/Banner";
-import ProductGrid from '../components/ProductGrid'
+import NativeBrContainerBox from "./NativeBrContainerBox";
+import {TYPE_CONTAINER_BOX} from '@bloomreach/spa-sdk';
 //if(Platform.OS !== "web"){
   import 'react-native-url-polyfill/auto';
 //}
 
-const mapping = { "News List": NewsList, Banner, "Product Grid (Search)": ProductGrid} ;
+const mapping = {  
+  [TYPE_CONTAINER_BOX]: NativeBrContainerBox,
+Banner, 
+} ;
 
 export const withBloomreachHOC = PassedComponent => {
   return class extends React.Component {

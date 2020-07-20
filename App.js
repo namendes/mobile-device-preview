@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./screens/HomeScreen";
 import IntroScreen from "./screens/IntroScreen";
 import useLinking from "./utils/useLinking";
+import { withBloomreachHOC } from "./components/brNativeWrapper";
 
 const Stack = createStackNavigator();
 
@@ -76,5 +77,4 @@ function App() {
     </NavigationContainer>
   );
 }
-
-export default App;
+export default withBloomreachHOC(App);

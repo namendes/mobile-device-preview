@@ -1,8 +1,8 @@
 import * as React from "react";
-import { View, Text } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { Button } from "react-native-elements";
 import { CommonActions } from "@react-navigation/native";
-
+import { BrComponent } from "@bloomreach/react-sdk";
 
 export default function IntroScreen({ navigation }) {
   function previous() {
@@ -20,10 +20,11 @@ export default function IntroScreen({ navigation }) {
     });
     navigation.dispatch(navActions);
   }
-  
+
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Intro Screen</Text>
+      <BrComponent style={styles.brcomp} path="main" />
       <Button
         title="Previous"
         onPress={previous}
@@ -44,3 +45,16 @@ export default function IntroScreen({ navigation }) {
     </View>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#aa0000",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  brcomp:{
+    width:100,
+    height:100,
+
+  }
+});
