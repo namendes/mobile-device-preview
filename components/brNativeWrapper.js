@@ -46,7 +46,7 @@ export const withBloomreachHOC = PassedComponent => {
             // object that we want to update
             ...prevState.configuration, // keep all other key-value pairs
             request: {
-              path: `/app${url}`
+              path: `/app/${url}`
             }
           }
         }));
@@ -56,7 +56,7 @@ export const withBloomreachHOC = PassedComponent => {
             // object that we want to update
             ...prevState.configuration, // keep all other key-value pairs
             request: {
-              path: `${url}`
+              path: `/app/${url}`
             }
           }
         }));
