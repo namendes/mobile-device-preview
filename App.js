@@ -9,7 +9,7 @@ import { withBloomreachHOC } from "./components/brNativeWrapper";
 
 const Stack = createStackNavigator();
 
-function App() {
+function App({changeRoute}) {
   const [isReady, setIsReady] = React.useState(false);
   const [initialState, setInitialState] = React.useState();
   const [currentNavigationState, setCurrentNavigationState] = useState("");
@@ -53,7 +53,7 @@ function App() {
         const currentRouteName = getActiveRouteName(state);
         console.log(previousRouteName + " - " + currentRouteName);
         if (previousRouteName !== currentRouteName) {
-         // changeRoute(currentRouteName);
+          changeRoute(currentRouteName);
         }
         setCurrentNavigationState(currentRouteName);
       }}

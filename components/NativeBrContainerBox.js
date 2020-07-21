@@ -1,8 +1,8 @@
 import React from 'react';
-import {  View, Fragment } from "react-native";
+import {  View, Fragment, Text } from "react-native";
 
 export default function NativeBrContainerBox(props) {
-    return props.children;
+    return <View ><Text>start</Text>{props.children}<Text>end</Text></View>;
       
     // tslint:disable:jsx-no-multiline-js
     // <div className={props.page.isPreview() ? 'hst-container' : undefined}>

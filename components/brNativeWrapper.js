@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { BrComponent, BrPage, BrPageContext } from "@bloomreach/react-sdk";
 import axios from "axios";
 import Banner from "../components/Banner";
+import Container from "../components/Container";
 import NativeBrContainerBox from "./NativeBrContainerBox";
 import {TYPE_CONTAINER_BOX} from '@bloomreach/spa-sdk';
 //if(Platform.OS !== "web"){
@@ -12,6 +13,7 @@ import {TYPE_CONTAINER_BOX} from '@bloomreach/spa-sdk';
 const mapping = {  
   [TYPE_CONTAINER_BOX]: NativeBrContainerBox,
 Banner, 
+Container
 } ;
 
 export const withBloomreachHOC = PassedComponent => {
@@ -28,7 +30,7 @@ export const withBloomreachHOC = PassedComponent => {
           httpClient: axios,
           cmsBaseUrl: "http://localhost:8080/site",
           request: {
-            path: "/"
+            path: "/app"
           }
         },
         token: token
@@ -36,6 +38,7 @@ export const withBloomreachHOC = PassedComponent => {
     }
 
     changeRoute = (url, token) => {
+      console.log("url: ", url)
       if (token) {
         this.setState({ token: token });
         this.setState(prevState => ({
@@ -43,7 +46,7 @@ export const withBloomreachHOC = PassedComponent => {
             // object that we want to update
             ...prevState.configuration, // keep all other key-value pairs
             request: {
-              path: `${url}${this.state.token}`
+              path: `/app${url}`
             }
           } 
         }));
