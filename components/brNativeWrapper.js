@@ -15,6 +15,14 @@ const mapping = {
   Banner,
   containerComponent: Container
 };
+const getBaseUrl = () =>{
+  if(global.preview){
+    return "http://localhost:8080/site";
+  }else{
+    return "http://localhost:8080/site/preview";
+  }
+}
+
 
 export const withBloomreachHOC = PassedComponent => {
   return class extends React.Component {
@@ -37,6 +45,7 @@ export const withBloomreachHOC = PassedComponent => {
       };
     }
 
+
     changeRoute = (url, token) => {
       console.log("url: ", url);
       if (token) {
@@ -55,6 +64,7 @@ export const withBloomreachHOC = PassedComponent => {
           configuration: {
             // object that we want to update
             ...prevState.configuration, // keep all other key-value pairs
+            cmsBaseUrl:getBaseUrl(),
             request: {
               path: `/app/${url}`
             }

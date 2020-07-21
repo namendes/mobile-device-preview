@@ -30,19 +30,21 @@ export default function IntroScreen({ navigation }) {
       <ScrollView style={styles.main}>
         <BrComponent style={styles.brcomp} path="top" />
         <LoremIpsum words={40} />
+        <View>
         <BrComponent style={styles.brcomp} path="main" />
-        <LoremIpsum words={40} />
+        </View>
+        {/* <LoremIpsum words={40} /> */}
         <BrComponent style={styles.brcomp} path="bottom" />
       </ScrollView>
       <View style={styles.bottom}>
-        <Button
+        {/* <Button
           title="Finish"
           onPress={next}
           titleStyle={{
             color: "#F57C00"
           }}
           type="clear"
-        />
+        /> */}
         <Button
           title="Previous"
           onPress={previous}

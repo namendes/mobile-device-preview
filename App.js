@@ -51,7 +51,7 @@ function App({changeRoute}) {
       onStateChange={state => {
         const previousRouteName = currentNavigationState;
         const currentRouteName = getActiveRouteName(state);
-        console.log(previousRouteName + " - " + currentRouteName);
+        //console.log(previousRouteName + " - " + currentRouteName);
         if (previousRouteName !== currentRouteName) {
           changeRoute(currentRouteName);
         }
