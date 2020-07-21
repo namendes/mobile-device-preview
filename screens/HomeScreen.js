@@ -5,7 +5,8 @@ import {
   Text,
   SafeAreaView,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert
 } from "react-native";
 import { Button } from "react-native-elements";
 import { CommonActions } from "@react-navigation/native";
@@ -17,6 +18,7 @@ import {
   TapGestureHandler
 } from "react-native-gesture-handler";
 
+
 export default function HomeScreen({ navigation }) {
   function next() {
     var navActions = CommonActions.reset({
@@ -26,9 +28,38 @@ export default function HomeScreen({ navigation }) {
     navigation.dispatch(navActions);
   }
 
+  const previewDialog = () =>{
+    if(global.preview === false){
+      return "Changing mode to Live?";
+    }else
+    {
+      return "Changing mode to Preview?"
+    }
+  }
+
+  const togglePreview = () => {
+    if(global.preview === false){
+      global.preview = true;
+    }else{
+      global.preview = false;
+    }
+  }
+
   const doubleTapRef = React.createRef();
   const _onHandlerStateChange = event => {
     if (event.nativeEvent.state === State.ACTIVE) {
+      Alert.alert(
+        //title
+        'Preview',
+        //body
+        previewDialog(),
+        [
+          {text: 'Yes', onPress: () => togglePreview()},
+          {text: 'No', onPress: () => togglePreview(), style: 'cancel'},
+        ],
+        { cancelable: false }
+        //clicking out side of alert will not cancel
+      );
       alert("I'm being pressed for so long");
     }
   };
@@ -66,19 +97,14 @@ export default function HomeScreen({ navigation }) {
       >
         <TapGestureHandler
           onHandlerStateChange={_onSingleTap}
-          waitFor={doubleTapRef}
         >
-          <TapGestureHandler
-            ref={doubleTapRef}
-            onHandlerStateChange={_onDoubleTap}
-            numberOfTaps={2}
-          >
-            <View style={styles.box} />
-          </TapGestureHandler>
+            <View style={styles.box} >
+            <Text style={styles.TextStyle}> LONG PRESS THE BUTTON </Text>
+            </View>
         </TapGestureHandler>
       </LongPressGestureHandler>
 
-      <TouchableOpacity
+      {/* <TouchableOpacity
         onLongPress={handlerLongClick}
         onPress={handlerClick}
         //Here is the trick
@@ -86,7 +112,7 @@ export default function HomeScreen({ navigation }) {
         style={styles.button}
       >
         <Text style={styles.TextStyle}> LONG PRESS THE BUTTON </Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <View style={styles.bottom}>
         <Button
           title="Next"
@@ -109,10 +135,12 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   box: {
-    width: 150,
-    height: 150,
+   // width: 150,
+   width: "80%",
+   justifyContent: "center",
+    height: 40,
     alignSelf: "center",
-    backgroundColor: "plum",
+    backgroundColor: "#EE5407",
     margin: 10,
     zIndex: 200
   },

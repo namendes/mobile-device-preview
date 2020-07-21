@@ -2,7 +2,6 @@ import * as React from "react";
 import { StyleSheet, View, Text, ImageBackground, Dimensions } from "react-native";
 import { BrManageContentButton, BrProps } from "@bloomreach/react-sdk";
 
-
 export default function Container(props) {
   // const { document: documentRef } = props.component.getModels();
   // const document = documentRef && props.page.getContent(documentRef);
