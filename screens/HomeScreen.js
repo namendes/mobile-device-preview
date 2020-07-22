@@ -50,7 +50,7 @@ export default function HomeScreen({ navigation }) {
     if (event.nativeEvent.state === State.ACTIVE) {
       Alert.alert(
         //title
-        'Preview',
+        'Live/Preview',
         //body
         previewDialog(),
         [
@@ -60,29 +60,14 @@ export default function HomeScreen({ navigation }) {
         { cancelable: false }
         //clicking out side of alert will not cancel
       );
-      alert("I'm being pressed for so long");
     }
   };
   const _onSingleTap = event => {
     if (event.nativeEvent.state === State.ACTIVE) {
-      alert("I'm touched");
+      alert("Not long enough, keep pressing to enable/disable preview");
     }
   };
-  const _onDoubleTap = event => {
-    if (event.nativeEvent.state === State.ACTIVE) {
-      alert("D0able tap, good job!");
-    }
-  };
-
-  const handlerLongClick = () => {
-    //handler for Long Click
-    alert(" Button Long Pressed");
-  };
-  const handlerClick = () => {
-    //handler for Long Click
-    alert(" Button Long Pressed");
-  };
-
+  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.title}>
@@ -99,7 +84,7 @@ export default function HomeScreen({ navigation }) {
           onHandlerStateChange={_onSingleTap}
         >
             <View style={styles.box} >
-            <Text style={styles.TextStyle}> LONG PRESS THE BUTTON </Text>
+            <Text style={styles.TextStyle}>My back door to preview </Text>
             </View>
         </TapGestureHandler>
       </LongPressGestureHandler>
